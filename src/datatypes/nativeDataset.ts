@@ -111,8 +111,10 @@ module Facet {
       return new AttributeInfo({ type: 'NUMBER' });
     } else if (isString(attributeValue)) {
       return new AttributeInfo({ type: 'STRING' });
+    } else if (attributeValue instanceof TimeRange) {
+      return new AttributeInfo({ type: TimeRange.type });
     } else if (attributeValue instanceof Dataset) {
-      return new AttributeInfo(attributeValue.getFullType())
+      return new AttributeInfo(attributeValue.getFullType());
     } else {
       throw new Error("Could not introspect");
     }
